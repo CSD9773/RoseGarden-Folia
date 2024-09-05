@@ -21,7 +21,10 @@ subprojects {
 
     repositories {
         mavenCentral()
-
+        maven {
+            name = "jitpack"
+            url = "https://jitpack.io"
+        }
         maven { url = 'https://repo.papermc.io/repository/maven-public/' }
         maven { url = 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
         maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
@@ -31,8 +34,11 @@ subprojects {
 
     dependencies {
         compileOnly 'org.jetbrains:annotations:24.0.1'
+        implementation "com.github.technicallycoded:FoliaLib:main-SNAPSHOT"
     }
-
+    shadowJar {
+        relocate "com.tcoded.folialib", "dev.rosewood.rosegarden.lib.folialib"
+    }
     publishing {
         repositories {
             if (project.hasProperty('mavenUser') && project.hasProperty('mavenPassword')) {

@@ -1,5 +1,6 @@
 package dev.rosewood.rosegarden;
 
+import com.tcoded.folialib.FoliaLib;
 import dev.rosewood.rosegarden.command.framework.RoseCommandWrapper;
 import dev.rosewood.rosegarden.command.rwd.RwdCommand;
 import dev.rosewood.rosegarden.config.RoseConfig;
@@ -31,6 +32,7 @@ import org.bukkit.plugin.ServicePriority;
 import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
+
 
 public abstract class RosePlugin extends JavaPlugin {
 
@@ -94,10 +96,8 @@ public abstract class RosePlugin extends JavaPlugin {
 
     @Override
     public void onLoad() {
-        // Log that we are loading
         this.getLogger().info("Initializing using RoseGarden v" + ROSEGARDEN_VERSION);
-
-        // Log severe if the library is not relocated
+        FoliaLib foliaLib = new FoliaLib(this);
         if (!RoseGardenUtils.isRelocated()) {
             RoseGardenUtils.getLogger().severe("=====================================================");
             RoseGardenUtils.getLogger().severe("DEVELOPER ERROR!!! RoseGarden has not been relocated!");

@@ -1,4 +1,4 @@
-rootProject.name = 'RoseGarden'
+rootProject.name = 'RoseGarden-Folia'
 
 include('Core')
 include('Compatibility')
